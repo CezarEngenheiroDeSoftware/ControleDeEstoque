@@ -1,1 +1,86 @@
+<<<<<<< HEAD
 ".vs/" 
+=======
+# ================================
+
+# ASP.NET MVC / .NET (Visual Studio)
+
+# ================================
+
+## Visual Studio
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+
+bin/
+obj/
+
+## Rider / VS Code
+
+.idea/
+.vscode/
+
+## Logs
+
+*.log
+
+## OS files
+
+.DS_Store
+Thumbs.db
+
+## ASP.NET Core
+
+appsettings.Development.json
+appsettings.Local.json
+
+## Secrets
+
+secrets.json
+
+## NuGet
+
+*.nupkg
+
+# Uncomment if you want to ignore packages folder (usually not needed)
+
+# packages/
+
+## Publish output
+
+publish/
+
+## Test results
+
+TestResults/
+
+## Entity Framework
+
+*.db
+*.db-shm
+*.db-wal
+
+## Node (caso use front-end)
+
+node_modules/
+dist/
+
+## Docker
+
+*.env
+
+## Temporary files
+
+tmp/
+
+# ================================
+
+# FIM DO .gitignore
+
+# ================================
+>>>>>>> e6fbe62a484fe5eb026ca59d36d7a10399286227
