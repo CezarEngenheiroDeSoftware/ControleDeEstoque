@@ -1,0 +1,100 @@
+﻿@model List<Controle_De_Estoque.Models.SerchProduct>
+
+<h1 class="" id="dashboard-title">
+    <strong>MercadoLivre</strong>
+</h1>
+<p class="text-success mb-4" aria-live="polite">
+        </p>
+<div class="row" role="region" aria-labelledby="dashboard-title">
+    <div class="col-md-12">
+        
+
+        <div class="card shadow mb-4 mr-4" role="region" aria-labelledby="produtos-title">
+            <div class="card-header">
+                <h2 class="text-primary" id="produtos-title">Produtos</h2>
+            </div>
+
+            <div class="card-body">
+
+                @foreach (var a in Model)
+                {
+                    <dl class="row" role="list">
+                        <dt class="col-sm-9" role="listitem">
+                            <span>@a.title</span>
+                            <input type="hidden" asp-for="@a.id" value="@a.id" name="@a.id" aria-hidden="true" />
+                        </dt>
+
+                        <dd class="col-sm-3">
+                            <a class="btn btn-primary"
+                               asp-route-id="@a.id"
+                               asp-controller="MercadoLivre"
+                               asp-action="GetProducts"
+                               role="button"
+                               aria-label="Ver detalhes do produto @a.title">
+                                Detalhes
+                            </a>
+                        </dd>
+                    </dl>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-bottom:30px; margin-bottom:30px;">
+    <!-- VARIAÇÕES -->
+    <div class="col-md-6">
+        <div class="card" role="region" aria-labelledby="variacoes-title">
+            <div class="card-header">
+                <h2 id="variacoes-title">Quantidade com Variações</h2>
+            </div>
+
+            <div class="card-body">
+                @foreach (var a in Model)
+                {
+                    if (a.variations != null && a.variations.Any())
+                    {
+                        foreach (var iten in a.variations)
+                        {
+                            <dl class="row">
+                                <dt class="col-sm-9">SKU:</dt>
+                                <dd class="col-sm-3">@iten.seller_custom_field</dd>
+
+                                <dt class="col-sm-9">Estoque:</dt>
+                                <dd class="col-sm-3">@iten.available_quantity</dd>
+                            </dl>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- BAIXO ESTOQUE -->
+    <div class="col-md-6">
+        <div class="card" role="region" aria-labelledby="estoque-baixo-title">
+            <div class="card-header">
+                <h2 class="" id="estoque-baixo-title">Itens com pouco Estoque</h2>
+            </div>
+
+            <div class="card-body">
+                @foreach (var a in Model)
+                {
+                    if (a.available_quantity <= 3)
+                    {
+                        <dl class="row" role="list">
+                            <dt class="col-sm-9" role="listitem">
+                                <strong>@a.title :</strong>
+                            </dt>
+                            <dd class="col-sm-2 text-danger"
+                                aria-label="Quantidade disponível: @a.available_quantity">
+                                @a.available_quantity
+                            </dd>
+                        </dl>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

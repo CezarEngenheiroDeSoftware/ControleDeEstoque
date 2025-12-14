@@ -1,0 +1,28 @@
+﻿@model Controle_De_Estoque.Models.EstoquePrincipal
+
+
+<form id="formUpdateEstoque" class="p-4" method="post" asp-controller="EstoquePrincipal" asp-action="UpdateEstoque">
+    <input type="hidden" asp-for="Id" />
+    <div class="col-sm-6 mb-3">
+        <label class="form-label">Nome do Produto</label>
+        <input class="form-control" type="text" asp-for="Name" />
+    </div>
+    <div class="col-sm-6 mb-3">
+        <label class="form-label">Quantidade no Estoque</label>
+        <input class="form-control" type="number" asp-for="Quantidade_Estoque" />
+    </div>
+    <div class="col-sm-12 mb-3">
+        <label class="form-label">SKU</label>
+        <input class="form-control" type="text" asp-for="SKU" />
+    </div>
+    <div class="col-sm-6 col-6">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i></button>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary d-none" role="status" id="btnLoginSpinner"">
+@*                 <span id="btnLoginSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+ *@                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</form>
+

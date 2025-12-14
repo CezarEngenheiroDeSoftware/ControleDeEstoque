@@ -1,0 +1,25 @@
+﻿@model Controle_De_Estoque.Models.EstoquePrincipal
+
+@{
+    Layout = null;
+}
+
+<form class="col-sm-6 col-6" method="post" id="form-Create" asp-controller="EstoquePrincipal" asp-action="Create">
+    @* <input type="hidden" asp-for="Id" /> *@
+    <div class="mb-3">
+        <label class="form-label">Nome do Produto</label>
+        <input class="form-control" type="text" asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantidade no Estoque</label>
+        <input class="form-control" type="number" asp-for="Quantidade_Estoque" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">SKU</label>
+        <input class="form-control" type="text" asp-for="SKU" />
+    </div>
+    <button id="botao-create" class="btn" type="submit">
+        <span id="txt">Adicionar<i class="fa fa-plus text-primary"></i></span>
+        <span id="btnLoginSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+        </button>
+</form>

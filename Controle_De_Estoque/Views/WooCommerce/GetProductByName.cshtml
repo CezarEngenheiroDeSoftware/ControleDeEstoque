@@ -1,0 +1,107 @@
+﻿@using Controle_De_Estoque.Models;
+@model List<Products>
+<div class="card shadow mb-3">
+    <div class="card-header">
+        <h4 class="text-success">Produtos</h4>
+    </div>
+    <div style="
+                height: 350px;
+                overflow-y: auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 5px;
+            " class="card-body table-responsive">
+        <table class="table-hover table-striped table col-12">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data da Criação</th>
+                    <th>Total em Estoque</th>
+                    <th>SKU</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var a in Model)
+                {
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-3">@a.name</td>
+                        <td class="p-3">@a.date_created</td>
+                        <td class="p-3">@a.stock_quantity</td>
+                        <td class="p-3">@a.sku</td>
+                        <td class="p-3 text-right">
+                            <a class="btn btn-editar-woo" data-id="@a.id" style="border-color:black;">
+                                <i class="fa fa-search text-primary"></i>
+                            </a>
+                        </td>
+                        </tr>
+                    @if(a.variationsProducts != null){
+                            @foreach(var variations in a.variationsProducts)
+                        {
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-3">@variations.name</td>
+                                <td class="p-3">@variations.date_created</td>
+                                <td class="p-3">@variations.stock_quantity</td>
+                                <td class="p-3">@variations.sku</td>
+                                <td class="p-3 text-right">
+                                    <a class="btn btn-editar-woo" data-id="@variations.id" style="border-color:black;">
+                                        <i class="fa fa-search text-primary"></i>
+                                    </a>
+                                </td>
+                                </tr>
+                            }
+                        }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEdicao" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Produto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="conteudoModalEditar">
+                <p>Modal body text goes here.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $(document).on('click', '.btn-editar-woo', function (e) {
+        e.preventDefault();
+
+        var id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            url: `/WooCommerce/Update?id=${id}`,
+            success: function (html) {
+                $('#conteudoModalEditar').html(html);
+                $('#modalEdicao').modal('show');
+            }
+        });
+    });
+
+
+    $(document).on('submit', '#form-Update', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/WooCommerce/UpdateProductItem",
+            data:  $(this).serialize(),
+            success: function () {
+                $("#modalEdicao").modal("hide");
+                location.reload();
+            }
+        });
+    });
+</script>

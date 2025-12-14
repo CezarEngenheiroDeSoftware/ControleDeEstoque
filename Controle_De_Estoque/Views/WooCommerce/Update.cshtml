@@ -1,0 +1,19 @@
+﻿@model Controle_De_Estoque.Models.UpdateStock
+
+<form id="form-Update" asp-controller="WooCommerce" asp-action="UpdateProductItem">
+    <input type="hidden" name="id" asp-for="id" />
+
+    <div class="mb-2">
+        <label>Sku: </label>
+        <input type="text" name="sku" id="sku" asp-for="sku" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Nova quantidade: </label>
+        <input type="number" id="stock_quantity" name="stock_quantity" asp-for="stock_quantity" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn">
+        <i class="fa fa-check text-success"></i>
+    </button>
+</form>

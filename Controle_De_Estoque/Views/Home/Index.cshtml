@@ -1,0 +1,16 @@
+﻿@using Controle_De_Estoque.Models.Login;
+@model Login;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@if (TempData["logado"] != null)
+{
+    <div class="alert-success">
+        <span>@TempData["logado"]</span>
+    </div>
+}
+<div class="text-center">
+    <a><img href="" src="~/imagens/LogoDoSistema.jpeg" alt="Logomarca do sistema Controle de Estoque uma letra C feita por linhas que se conectam em azul" style="height:400px; align-content:center;" /></a>
+    <p class="display-9">Bem Vindo</p>
+    <a asp-controller="MercadoLivre" asp-action="login" asp-route-userId="@Model.Id" alt="Botão para logar no Mercado Livre">login</a>
+</div>

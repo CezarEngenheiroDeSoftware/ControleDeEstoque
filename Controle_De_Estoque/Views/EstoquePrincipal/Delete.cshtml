@@ -1,0 +1,39 @@
+﻿@model Controle_De_Estoque.Models.EstoquePrincipal
+
+<h3>Tem certeza que deseja excluir este produto?</h3>
+
+<form method="post" asp-controller="EstoquePrincipal" asp-action="DeleteProduct">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div>
+        <label class="form-label">Nome do Produto</label>
+        <input type="text" asp-for="Name" class="form-control" readonly />
+    </div>
+
+    <div>
+        <label class="form-label">Quantidade no Estoque</label>
+        <input type="number" asp-for="Quantidade_Estoque" class="form-control" readonly />
+    </div>
+
+    <div>
+        <label class="form-label">SKU</label>
+        <input type="text" asp-for="SKU" class="form-control" readonly />
+    </div>
+
+    <div>
+        <label>Produto WooCommerce</label>
+        <input type="text" value="@Model.produtos_WooCommerce?.name" class="form-control" readonly />
+    </div>
+
+    <div>
+        <label>Produto Mercado Livre</label>
+        <input type="text" value="@Model.produtos_MercadoLivre?.title" class="form-control" readonly />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-danger">
+        <i class="fa fa-remove"></i> Excluir
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "API_MercadoLivre\\API_MercadoLivre.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Controle_De_Estoque\\Controle_De_Estoque.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "API_WordPress\\API_WordPress.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+﻿
+@model List<Controle_De_Estoque.Models.MercadoLivre>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<h2 class="mb-4">Lista de Produtos</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Estoque</th>
+            <th>SKU</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.title</td>
+                <td>@item.available_quantity</td>
+                @foreach(var a in item.variations)
+                {
+                    if(a.seller_custom_field != null && a.seller_custom_field.Any())
+                    {
+                        <td>@a.seller_custom_field</td>
+                    }
+                    else
+                    {
+                        <td>Sem SKU</td>
+                    }
+                }
+                <td>
+                    <a style="border-color:black;" asp-controller="MercadoLivre" asp-action="Update" asp-route-id="@item.id" class="btn btn-sm"><i class="text-primary fa fa-edit"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

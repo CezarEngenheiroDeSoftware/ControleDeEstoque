@@ -1,0 +1,113 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Controle_De_Estoque
+build_property.RootNamespace = Controle_De_Estoque
+build_property.ProjectDir = D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/EstoquePrincipal/CreateView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVByaW5jaXBhbFxDcmVhdGVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/EstoquePrincipal/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVByaW5jaXBhbFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/EstoquePrincipal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVByaW5jaXBhbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/EstoquePrincipal/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0b3F1ZVByaW5jaXBhbFxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Login/LoginExecute.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5FeGVjdXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Login/ViewConfig.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cVmlld0NvbmZpZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Login/ViewCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cVmlld0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/MercadoLivre/GetListProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2Fkb0xpdnJlXEdldExpc3RQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/MercadoLivre/GetProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2Fkb0xpdnJlXEdldFByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/MercadoLivre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2Fkb0xpdnJlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/MercadoLivre/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2Fkb0xpdnJlXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/WooCommerce/GetListProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29vQ29tbWVyY2VcR2V0TGlzdFByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/WooCommerce/GetProductByName.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29vQ29tbWVyY2VcR2V0UHJvZHVjdEJ5TmFtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/WooCommerce/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29vQ29tbWVyY2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/WooCommerce/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29vQ29tbWVyY2VcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projeto_Pai/Mercado_Livre/Controle_De_Estoque/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-37x08a1n7g

@@ -1,0 +1,27 @@
+﻿@model Controle_De_Estoque.Models.SerchProduct
+
+<h4 class="mb-3 text-primary">Atualizar Estoque - Produto @Model.id</h4>
+
+@foreach (var v in Model.variations)
+{
+    <div class="card mb-2 p-3 col-6">
+        <div><strong>Variation id: </strong> @v.variationsId</div>
+        <div><strong>Estoque atual: </strong> @v.available_quantity</div>
+
+        <form asp-action="UpdateItem" asp-controller="MercadoLivre" method="post" class="mt-2">
+            <input type="hidden" name="id" value="@Model.id" />
+            <input type="hidden" name="variationId" value="@v.variationsId" />
+
+            <div class="mb-2">
+                <label class="form-label">Nova quantidade: </label>
+                <input type="number" name="available_quantity" value="@v.available_quantity" class="form-control" min="0" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">SKU: </label>
+                <input type="text" name="seller_custom_field" value="@v.seller_custom_field" class="form-control" min="0" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar Estoque</button>
+        </form>
+    </div>
+}

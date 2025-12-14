@@ -1,0 +1,123 @@
+﻿@model List<Controle_De_Estoque.Models.EstoquePrincipal>
+
+@if (TempData["Check"] != null)
+{
+    <div class="alert-success">
+        <p>@TempData["Check"]</p>
+    </div>
+}
+@if (TempData["SincronizarFaill"] != null)
+{
+    <div class="alert-warning">
+        <p>@TempData["SincronizarFaill"]</p>
+    </div>
+} 
+<h4 class="col-sm-6 col-6">Lista de Produtos do Estoque </h4>
+<div class="card">
+    <div class="">
+        <div>
+            <a class="btn_add btn btn-light" asp-controller="EstoquePrincipal" asp-action="CreateView"><i class="text-primary fa fa-plus"></i>Adicionar</a>
+            | <a asp-controller="EstoquePrincipal" asp-action="Sincronizar" class="btn btn-light"><i class="fa fa-refresh text-primary"></i>Sincronizar...</a>
+        </div>
+    </div>
+    <div style="
+                height: 350px;
+                overflow-y: auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 5px;
+            " class="card-body">
+        <div>
+            <form asp-controller="EstoquePrincipal" asp-action="Index">
+                <label name="nome" class="form-label">Nome</label>
+                <input type="text" name="nome" class="form-control mb-3" />
+                <button style="border-color:black;" class="btn mb-3" type="submit"><i class="fa fa-search text-primary"></i>Buscar</button>
+            </form>
+        </div>
+        <table class="table table-responsive table-hover table-borderless">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Quantidade em Estoque</th>
+                        <th>SKU</th>
+                        <th>WooCommerce</th>
+                        <th>Mercado Livre</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach(var a in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(item=>a.Name)</td>
+                        <td>@Html.DisplayFor(item => a.Quantidade_Estoque)</td>
+                        <td>@Html.DisplayFor(item => a.SKU)</td>
+                        @if(a.produtos_WooCommerce != null)
+                        {
+                            <td>@Html.DisplayFor(item => a.produtos_WooCommerce.name)</td>
+                            
+                        }
+                        else
+                        {
+                            <td>Sem Referência</td>
+                        }
+                        @if(a.produtos_MercadoLivre != null)
+                        {
+                            <td id="produto_meli">@Html.DisplayFor(item => a.produtos_MercadoLivre.title)</td>
+                        }
+                        else
+                        {
+                            <td id="produto_meli">Sem referência</td>
+                        }
+
+                        <td><a style="border-color:black;" class="btn-editar btn" asp-controller="EstoquePrincipal" asp-action="Update" data-id="@a.Id"><i class="fa fa-edit text-primary"></i></a>
+                            <a style="border-color:black;" class="btn"
+                               asp-controller="EstoquePrincipal"
+                               asp-action="Delete"
+                               asp-route-id="@a.Id">
+                                <i class="fa fa-trash text-danger"></i>
+                             </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEdicao" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Atualizar Estoque</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="conteudoModalEditar">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i></button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCreate" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Adicionar Produto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="conteudoModalCreate">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal"><i class="fa fa-close text-danger"></i></button>
+                <button type="button" class="btn"><i class="fa fa-check text-success"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+

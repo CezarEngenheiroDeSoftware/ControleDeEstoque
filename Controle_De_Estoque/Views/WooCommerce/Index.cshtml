@@ -1,0 +1,116 @@
+﻿@model List<Controle_De_Estoque.Models.DashBoardWooCommerce>
+
+
+    <div class="card shadow mb-3">
+        <div class="card-header">
+            <h4 class="text-success" alt="Vendas Realizadas">Vendas Realizadas</h4>
+        </div>
+    <form asp-controller="WooCommerce" asp-action="GetProductByName" method="get">
+            <label name="name" class="form-label" aria-label="Digite um nome para buscar">Nome</label>
+            <input name="name" type="text" alt="caixa para digitar o nome para busca" />
+            <button type="submit" class="btn" alt="Botão de busca">buscar</button>
+        </form>
+    <form asp-action="Index" asp-controller="WooCommerce" class="mb-3">
+        <label class="form-label">Filtrar por data</label>
+        <div class="input-group" style="max-width: 200px;">
+            <input type="date" name="date_filter" class="form-control" />
+            <button style="padding:5px;" type="submit" class=" btn-success"><span class=" fa fa-search"></span></button>
+        </div>
+    </form>
+    <div style="
+                height: 350px;
+                overflow-y: auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 5px;
+            " class="card-body table-responsive">
+                <table class="table-hover table-striped table col-12">
+            <caption>Tabela com as últimas vendas realizadas</caption>
+                    <thead>
+                    <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Data do Pedido</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach(var a in Model)
+                        {
+                            @foreach(var b in a.orders)
+                            {
+                            <tr>
+                                <td>@b.status</td>
+                                <td>@b.date_created</td>
+                                <td>@b.total</td>
+                                <td>@b.billing.first_name</td>
+                                <td>@b.billing.phone</td>
+                                <td>@b.billing.email</td>
+                            </tr>
+                            }
+                        }
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+<div class="mb-10">
+    <div class="card shadow col-12 mb-5">
+        <div class="card-header">
+            <h4>Produtos com Estoque Baixo</h4>
+        </div>
+
+        <div class="card-body" style="margin-bottom:15px;">
+
+            <form asp-action="Index" asp-controller="WooCommerce" class="mb-3">
+                <label class="form-label">Quantidade mínima</label>
+                <div class="input-group" style="max-width: 200px;">
+                    <input type="number" name="quantity_Product" class="form-control" />
+                    <button style="padding:5px;" type="submit" class=" btn-primary"><span class=" fa fa-search"></span></button>
+                </div>
+            </form>
+
+            <div style="
+                height: 200px;
+                overflow-y: auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 5px;
+            ">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light mb-35" style="position: sticky; top: 0; z-index: 1; padding-bottom:10px;">
+                        <tr>
+                            <th style="width: 60%;">Nome do Produto</th>
+                            <th style="width: 30%; text-align:center;">Quantidade</th>
+                            <th style="width: 10%">sku</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var a in Model)
+                        {
+                            foreach (var b in a.Products)
+                            {
+                                if (b.stock_quantity <= 3)
+                                {
+                                    <tr>
+                                        <td>@b.name</td>
+                                        <td style="text-align:center;" class="text-danger"><trong>@b.stock_quantity</trong></td>
+                                        <td>@b.sku</td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

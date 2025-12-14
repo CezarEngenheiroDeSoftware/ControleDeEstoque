@@ -1,0 +1,76 @@
+﻿@model Controle_De_Estoque.Models.Login.UserConfig;
+
+@{
+    ViewData["Title"] = "Configurações";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Configurações de Integração</h2>
+
+    <form asp-action="Config" method="post">
+
+        <div class="card mb-4 col-lg-6">
+            <div class="card-header bg-primary text-white">
+                <strong>Mercado Livre</strong>
+            </div>
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label class="form-label">Client ID</label>
+                    <input asp-for="MeliClientId" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Client Secret</label>
+                    <input asp-for="MeliClientSecret" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Redirect URI</label>
+                    <input asp-for="redirect_uri" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Refresh Token</label>
+                    <input asp-for="MeliRefreshToken" class="form-control" />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card mb-4 col-lg-6">
+            <div class="card-header bg-success text-white">
+                <strong>WooCommerce</strong>
+            </div>
+
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label class="form-label">URL da Loja WooCommerce</label>
+                    <input asp-for="WooUrl" class="form-control" placeholder="https://minhaloja.com" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Consumer Key</label>
+                    <input asp-for="WooConsumerKey" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Consumer Secret</label>
+                    <input asp-for="WooConsumerSecret" class="form-control" />
+                </div>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary px-4">Salvar</button>
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
