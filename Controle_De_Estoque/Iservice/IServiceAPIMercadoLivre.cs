@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 public interface IServiceAPIMercadoLivre
 {
-    Task<bool> VerificarToken();
+    //Task<bool> VerificarToken();
 
     Task<UserData> GetUserData(string token);
 

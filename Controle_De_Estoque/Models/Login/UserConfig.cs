@@ -16,9 +16,6 @@ namespace Controle_De_Estoque.Models.Login
         public string? WooUrl { get; set; }
         public string? WooConsumerKey { get; set; }
         public string? WooConsumerSecret { get; set; }
-
-        public int LoginId { get; set; }
-        public Login? Login { get; set; }
     }
 
 }

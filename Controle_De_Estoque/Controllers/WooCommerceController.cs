@@ -1,8 +1,10 @@
-﻿using Controle_De_Estoque.Iservice;
+﻿using Controle_De_Estoque.Data;
+using Controle_De_Estoque.Iservice;
 using Controle_De_Estoque.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Controle_De_Estoque.Controllers
 {
@@ -10,11 +12,17 @@ namespace Controle_De_Estoque.Controllers
     {
         
         public readonly IWooCommerceService _WooCommerceService;
-        public WooCommerceController(IWooCommerceService wooCommerceService)
+        public readonly Context _context;
+        public WooCommerceController(IWooCommerceService wooCommerceService, Context context)
         {
             _WooCommerceService = wooCommerceService;
+            _context = context;
         }
-        
+        public async Task<IActionResult> DashBoard()
+        {
+            var produto = await _WooCommerceService.BuscarTodos();
+            return View(produto);
+        }
         
         public async Task<IActionResult> Index(DateTime? date_filter, string? name, int? quantity_Product = 0)
         {

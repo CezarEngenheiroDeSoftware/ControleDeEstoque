@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Controle_De_Estoque.Models.Products>
+
+<div class="container-fluid bg-black text-light min-vh-100 p-4">
+    <div class="container-xxl bg-dark bg-opacity-75 rounded-4 p-4 shadow-lg">
+        <h1 class="h3 fw-bold mb-4"><i class="fa"></i>Dashboard</h1>
+
+        <!-- CARDS -->
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm h-100" aria-label="Total de anúncios ativos">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">Anúncios Ativos</small>
+                            <div class="fs-4 fw-semibold">Nome</div>
+                        </div>
+                        <i class="bi bi-box-seam fs-3 text-primary" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm h-100" aria-label="Vendas no período">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">Vendas (30 dias)</small>
+                            <div class="fs-4 fw-semibold">Nome</div>
+                        </div>
+                        <i class="bi bi-graph-up-arrow fs-3 text-success" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm h-100" aria-label="Produto mais vendido">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">Produto Mais Vendido</small>
+                            <div class="fs-6 fw-semibold">Nome</div>
+                        </div>
+                        <i class="bi bi-cart-check fs-3 text-info" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm h-100" aria-label="Produtos com estoque baixo">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">Estoque Baixo</small>
+                            <div class="fs-4 fw-semibold">Nome</div>
+                        </div>
+                        <i class="bi bi-exclamation-triangle fs-3 text-danger" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABELA PRODUTOS MAIS VENDIDOS -->
+        <div class="row mt-5">
+            <div class="col-xl-8">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="h5 fw-semibold mb-3">Produtos Mais Vendidos</h2>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover align-middle" aria-label="Tabela de produtos mais vendidos">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Produto</th>
+                                        <th scope="col">Quantidade de Vendas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @* @foreach (var item in Variations)
+                                    { *@
+                                        <tr>
+                                            <th scope="row">Nome</th>
+                                            <td>Nome</td>
+                                        </tr>
+                                    @* } *@
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESTOQUE CRÍTICO -->
+            <div class="col-xl-4 mt-4 mt-xl-0">
+                <div class="card bg-secondary bg-opacity-10 border border-secondary rounded-4 shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h5 fw-semibold mb-3">Estoque Crítico</h2>
+                        <ul class="list-group list-group-flush" aria-label="Lista de produtos com estoque crítico">
+                            @* @foreach (var item in Model.)
+                            { *@
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                                    <span>Nome</span>
+                                    <span class="text-danger">Nome</span>
+                                </li>
+                            @* } *@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ```
+
+</div>
+
+<!-- Bootstrap Icons -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />

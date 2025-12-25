@@ -22,6 +22,30 @@ namespace Controle_De_Estoque.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Controle_De_Estoque.Model.AttributeEan", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SerchProductid")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("value_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("value_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("SerchProductid");
+
+                    b.ToTable("AttributeEan");
+                });
+
             modelBuilder.Entity("Controle_De_Estoque.Models.AttributeWoo", b =>
                 {
                     b.Property<int>("id")
@@ -47,33 +71,6 @@ namespace Controle_De_Estoque.Migrations
                     b.HasIndex("Productsid");
 
                     b.ToTable("AttributeWoo");
-                });
-
-            modelBuilder.Entity("Controle_De_Estoque.Models.Attributes", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MercadoLivreid")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("value_id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("value_name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("MercadoLivreid");
-
-                    b.ToTable("Attributes");
                 });
 
             modelBuilder.Entity("Controle_De_Estoque.Models.EstoquePrincipal", b =>
@@ -150,9 +147,6 @@ namespace Controle_De_Estoque.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("LoginId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MeliClientId")
                         .HasColumnType("nvarchar(max)");
 
@@ -176,9 +170,6 @@ namespace Controle_De_Estoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LoginId")
-                        .IsUnique();
-
                     b.ToTable("UserConfig");
                 });
 
@@ -191,9 +182,6 @@ namespace Controle_De_Estoque.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("Expire_in")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LoginId")
                         .HasColumnType("int");
 
                     b.Property<string>("access_token")
@@ -210,38 +198,7 @@ namespace Controle_De_Estoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LoginId")
-                        .IsUnique();
-
                     b.ToTable("UserMeliToken");
-                });
-
-            modelBuilder.Entity("Controle_De_Estoque.Models.MercadoLivre", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("available_quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("category_id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("category_name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("domain_id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("domain_name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("MercadoLivre");
                 });
 
             modelBuilder.Entity("Controle_De_Estoque.Models.Products", b =>
@@ -281,6 +238,44 @@ namespace Controle_De_Estoque.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Controle_De_Estoque.Models.SerchProduct", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("available_quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("category_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("category_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("domain_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("domain_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("userConfigId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("userMeliTokenId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("userConfigId");
+
+                    b.HasIndex("userMeliTokenId");
+
+                    b.ToTable("SerchProduct");
+                });
+
             modelBuilder.Entity("Controle_De_Estoque.Models.Variations", b =>
                 {
                     b.Property<long>("variationsId")
@@ -289,7 +284,7 @@ namespace Controle_De_Estoque.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("variationsId"));
 
-                    b.Property<string>("MercadoLivreid")
+                    b.Property<string>("SerchProductid")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("available_quantity")
@@ -303,9 +298,16 @@ namespace Controle_De_Estoque.Migrations
 
                     b.HasKey("variationsId");
 
-                    b.HasIndex("MercadoLivreid");
+                    b.HasIndex("SerchProductid");
 
                     b.ToTable("Variations");
+                });
+
+            modelBuilder.Entity("Controle_De_Estoque.Model.AttributeEan", b =>
+                {
+                    b.HasOne("Controle_De_Estoque.Models.SerchProduct", null)
+                        .WithMany("attributes")
+                        .HasForeignKey("SerchProductid");
                 });
 
             modelBuilder.Entity("Controle_De_Estoque.Models.AttributeWoo", b =>
@@ -315,16 +317,9 @@ namespace Controle_De_Estoque.Migrations
                         .HasForeignKey("Productsid");
                 });
 
-            modelBuilder.Entity("Controle_De_Estoque.Models.Attributes", b =>
-                {
-                    b.HasOne("Controle_De_Estoque.Models.MercadoLivre", null)
-                        .WithMany("attributes")
-                        .HasForeignKey("MercadoLivreid");
-                });
-
             modelBuilder.Entity("Controle_De_Estoque.Models.EstoquePrincipal", b =>
                 {
-                    b.HasOne("Controle_De_Estoque.Models.MercadoLivre", "produtos_MercadoLivre")
+                    b.HasOne("Controle_De_Estoque.Models.SerchProduct", "produtos_MercadoLivre")
                         .WithMany()
                         .HasForeignKey("produtos_MercadoLivreid");
 
@@ -337,28 +332,6 @@ namespace Controle_De_Estoque.Migrations
                     b.Navigation("produtos_WooCommerce");
                 });
 
-            modelBuilder.Entity("Controle_De_Estoque.Models.Login.UserConfig", b =>
-                {
-                    b.HasOne("Controle_De_Estoque.Models.Login.Login", "Login")
-                        .WithOne("UserConfig")
-                        .HasForeignKey("Controle_De_Estoque.Models.Login.UserConfig", "LoginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Login");
-                });
-
-            modelBuilder.Entity("Controle_De_Estoque.Models.Login.UserMeliToken", b =>
-                {
-                    b.HasOne("Controle_De_Estoque.Models.Login.Login", "login")
-                        .WithOne("UserMeliToken")
-                        .HasForeignKey("Controle_De_Estoque.Models.Login.UserMeliToken", "LoginId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("login");
-                });
-
             modelBuilder.Entity("Controle_De_Estoque.Models.Products", b =>
                 {
                     b.HasOne("Controle_De_Estoque.Models.Products", null)
@@ -366,25 +339,26 @@ namespace Controle_De_Estoque.Migrations
                         .HasForeignKey("Productsid");
                 });
 
+            modelBuilder.Entity("Controle_De_Estoque.Models.SerchProduct", b =>
+                {
+                    b.HasOne("Controle_De_Estoque.Models.Login.UserConfig", "userConfig")
+                        .WithMany()
+                        .HasForeignKey("userConfigId");
+
+                    b.HasOne("Controle_De_Estoque.Models.Login.UserMeliToken", "userMeliToken")
+                        .WithMany()
+                        .HasForeignKey("userMeliTokenId");
+
+                    b.Navigation("userConfig");
+
+                    b.Navigation("userMeliToken");
+                });
+
             modelBuilder.Entity("Controle_De_Estoque.Models.Variations", b =>
                 {
-                    b.HasOne("Controle_De_Estoque.Models.MercadoLivre", null)
+                    b.HasOne("Controle_De_Estoque.Models.SerchProduct", null)
                         .WithMany("variations")
-                        .HasForeignKey("MercadoLivreid");
-                });
-
-            modelBuilder.Entity("Controle_De_Estoque.Models.Login.Login", b =>
-                {
-                    b.Navigation("UserConfig");
-
-                    b.Navigation("UserMeliToken");
-                });
-
-            modelBuilder.Entity("Controle_De_Estoque.Models.MercadoLivre", b =>
-                {
-                    b.Navigation("attributes");
-
-                    b.Navigation("variations");
+                        .HasForeignKey("SerchProductid");
                 });
 
             modelBuilder.Entity("Controle_De_Estoque.Models.Products", b =>
@@ -392,6 +366,13 @@ namespace Controle_De_Estoque.Migrations
                     b.Navigation("attributes");
 
                     b.Navigation("variationsProducts");
+                });
+
+            modelBuilder.Entity("Controle_De_Estoque.Models.SerchProduct", b =>
+                {
+                    b.Navigation("attributes");
+
+                    b.Navigation("variations");
                 });
 #pragma warning restore 612, 618
         }

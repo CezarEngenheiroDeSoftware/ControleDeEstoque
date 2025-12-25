@@ -3,6 +3,7 @@ using Controle_De_Estoque.Iservice;
 using Microsoft.EntityFrameworkCore;
 using Controle_De_Estoque.Data;
 using Controle_De_Estoque.Service;
+using Controle_De_Estoque.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<Context>(options =>
@@ -33,7 +34,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
+builder.Services.Configure<MeliAcess>(builder.Configuration.GetSection("MeliAcess"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

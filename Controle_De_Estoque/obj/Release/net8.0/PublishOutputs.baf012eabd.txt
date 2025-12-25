@@ -1,8 +1,4 @@
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_MercadoLivre.exe
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_WordPress.exe
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Controle_De_Estoque.exe
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_MercadoLivre.runtimeconfig.json
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_WordPress.runtimeconfig.json
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\appsettings.json
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\libman.json
@@ -20,12 +16,8 @@ D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\M
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.ObjectPool.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -35,14 +27,9 @@ D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\M
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\NgrokAspNetCore.Lib.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\System.ClientModel.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
@@ -64,10 +51,4 @@ D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\r
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_MercadoLivre.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_WordPress.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\ClassesBd.dll
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_MercadoLivre.pdb
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\API_WordPress.pdb
-D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\ClassesBd.pdb
 D:\Projeto_Pai\Mercado_Livre\Controle_De_Estoque\obj\Release\net8.0\PubTmp\Out\Controle_De_Estoque.deps.json

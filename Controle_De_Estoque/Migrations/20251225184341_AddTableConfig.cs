@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Controle_De_Estoque.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class AddTableConfig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,23 +25,6 @@ namespace Controle_De_Estoque.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logins", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MercadoLivre",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    domain_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    domain_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    category_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    category_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    available_quantity = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MercadoLivre", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,18 +63,11 @@ namespace Controle_De_Estoque.Migrations
                     MeliRefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WooUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WooConsumerKey = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WooConsumerSecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LoginId = table.Column<int>(type: "int", nullable: false)
+                    WooConsumerSecret = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserConfig", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserConfig_Logins_LoginId",
-                        column: x => x.LoginId,
-                        principalTable: "Logins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,59 +80,11 @@ namespace Controle_De_Estoque.Migrations
                     access_token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     refreshtoken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Expire_in = table.Column<int>(type: "int", nullable: true),
-                    datacriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LoginId = table.Column<int>(type: "int", nullable: false)
+                    datacriacao = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserMeliToken", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserMeliToken_Logins_LoginId",
-                        column: x => x.LoginId,
-                        principalTable: "Logins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Attributes",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    value_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    value_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MercadoLivreid = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Attributes", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Attributes_MercadoLivre_MercadoLivreid",
-                        column: x => x.MercadoLivreid,
-                        principalTable: "MercadoLivre",
-                        principalColumn: "id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Variations",
-                columns: table => new
-                {
-                    variationsId = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    available_quantity = table.Column<int>(type: "int", nullable: false),
-                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    seller_custom_field = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MercadoLivreid = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Variations", x => x.variationsId);
-                    table.ForeignKey(
-                        name: "FK_Variations_MercadoLivre_MercadoLivreid",
-                        column: x => x.MercadoLivreid,
-                        principalTable: "MercadoLivre",
-                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -181,6 +109,55 @@ namespace Controle_De_Estoque.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SerchProduct",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    domain_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    domain_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    category_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    category_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    available_quantity = table.Column<int>(type: "int", nullable: true),
+                    userMeliTokenId = table.Column<int>(type: "int", nullable: true),
+                    userConfigId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SerchProduct", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_SerchProduct_UserConfig_userConfigId",
+                        column: x => x.userConfigId,
+                        principalTable: "UserConfig",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SerchProduct_UserMeliToken_userMeliTokenId",
+                        column: x => x.userMeliTokenId,
+                        principalTable: "UserMeliToken",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AttributeEan",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    value_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    value_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SerchProductid = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttributeEan", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_AttributeEan_SerchProduct_SerchProductid",
+                        column: x => x.SerchProductid,
+                        principalTable: "SerchProduct",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Estoque",
                 columns: table => new
                 {
@@ -195,21 +172,42 @@ namespace Controle_De_Estoque.Migrations
                 {
                     table.PrimaryKey("PK_Estoque", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Estoque_MercadoLivre_produtos_MercadoLivreid",
-                        column: x => x.produtos_MercadoLivreid,
-                        principalTable: "MercadoLivre",
-                        principalColumn: "id");
-                    table.ForeignKey(
                         name: "FK_Estoque_Products_produtos_WooCommerceid",
                         column: x => x.produtos_WooCommerceid,
                         principalTable: "Products",
                         principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_Estoque_SerchProduct_produtos_MercadoLivreid",
+                        column: x => x.produtos_MercadoLivreid,
+                        principalTable: "SerchProduct",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Variations",
+                columns: table => new
+                {
+                    variationsId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    available_quantity = table.Column<int>(type: "int", nullable: false),
+                    price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    seller_custom_field = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SerchProductid = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Variations", x => x.variationsId);
+                    table.ForeignKey(
+                        name: "FK_Variations_SerchProduct_SerchProductid",
+                        column: x => x.SerchProductid,
+                        principalTable: "SerchProduct",
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attributes_MercadoLivreid",
-                table: "Attributes",
-                column: "MercadoLivreid");
+                name: "IX_AttributeEan_SerchProductid",
+                table: "AttributeEan",
+                column: "SerchProductid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttributeWoo_Productsid",
@@ -232,28 +230,26 @@ namespace Controle_De_Estoque.Migrations
                 column: "Productsid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserConfig_LoginId",
-                table: "UserConfig",
-                column: "LoginId",
-                unique: true);
+                name: "IX_SerchProduct_userConfigId",
+                table: "SerchProduct",
+                column: "userConfigId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserMeliToken_LoginId",
-                table: "UserMeliToken",
-                column: "LoginId",
-                unique: true);
+                name: "IX_SerchProduct_userMeliTokenId",
+                table: "SerchProduct",
+                column: "userMeliTokenId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Variations_MercadoLivreid",
+                name: "IX_Variations_SerchProductid",
                 table: "Variations",
-                column: "MercadoLivreid");
+                column: "SerchProductid");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Attributes");
+                name: "AttributeEan");
 
             migrationBuilder.DropTable(
                 name: "AttributeWoo");
@@ -262,10 +258,7 @@ namespace Controle_De_Estoque.Migrations
                 name: "Estoque");
 
             migrationBuilder.DropTable(
-                name: "UserConfig");
-
-            migrationBuilder.DropTable(
-                name: "UserMeliToken");
+                name: "Logins");
 
             migrationBuilder.DropTable(
                 name: "Variations");
@@ -274,10 +267,13 @@ namespace Controle_De_Estoque.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Logins");
+                name: "SerchProduct");
 
             migrationBuilder.DropTable(
-                name: "MercadoLivre");
+                name: "UserConfig");
+
+            migrationBuilder.DropTable(
+                name: "UserMeliToken");
         }
     }
 }

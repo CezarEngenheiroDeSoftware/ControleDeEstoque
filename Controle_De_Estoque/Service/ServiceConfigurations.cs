@@ -13,23 +13,23 @@ namespace Controle_De_Estoque.Service
             _context = context;
             _session = session;
         }
-        public async Task<UserConfig> BuscarPorSessao()
+        public async Task<Login> BuscarPorSessao()
         {
             var sessao = _session.GetSession();
-            var usuario = await _context.Logins.FirstOrDefaultAsync(a => a.Id == sessao.UserConfig.LoginId);
-            var configurationsUser = new UserConfig
-            {
-                LoginId = usuario.Id,
-                MeliClientId = usuario.UserConfig.MeliClientId,
-                MeliClientSecret = usuario.UserConfig.MeliClientSecret,
-                redirect_uri = usuario.UserConfig.redirect_uri,
-                MeliRefreshToken = usuario.UserConfig.MeliRefreshToken,
-                WooUrl = usuario.UserConfig.WooUrl,
-                WooConsumerKey = usuario.UserConfig.WooConsumerKey,
-                WooConsumerSecret = usuario.UserConfig.WooConsumerSecret,
-                Login = usuario,
-            };
-            return configurationsUser;
+            var usuario = await _context.Logins.FirstOrDefaultAsync(a => a.Id == sessao.Id);
+            //var configurationsUser = new UserConfig
+            //{
+            //    LoginId = usuario.Id,
+            //    MeliClientId = usuario.UserConfig.MeliClientId,
+            //    MeliClientSecret = usuario.UserConfig.MeliClientSecret,
+            //    redirect_uri = usuario.UserConfig.redirect_uri,
+            //    MeliRefreshToken = usuario.UserConfig.MeliRefreshToken,
+            //    WooUrl = usuario.UserConfig.WooUrl,
+            //    WooConsumerKey = usuario.UserConfig.WooConsumerKey,
+            //    WooConsumerSecret = usuario.UserConfig.WooConsumerSecret,
+            //    Login = usuario,
+            //};
+            return usuario;
         }
     }
 }
