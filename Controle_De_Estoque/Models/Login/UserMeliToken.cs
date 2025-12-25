@@ -15,11 +15,6 @@ namespace Controle_De_Estoque.Models.Login
 
         public int? Expire_in { get; set; }
         public DateTime datacriacao { get; set; }
-
-        public int LoginId { get; set; }
-
-        [JsonIgnore]
-        public Login? Login { get; set; }
     }
 
 }

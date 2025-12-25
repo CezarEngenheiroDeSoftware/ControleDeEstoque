@@ -27,12 +27,6 @@ namespace Controle_De_Estoque.Models.Login
         [Required(ErrorMessage = "O campo Email é obrigatório.")]
         [EmailAddress]
         public string Email { get; set; } = "";
-
-        [JsonIgnore]
-        public UserConfig? UserConfig { get; set; } = new UserConfig();
-
-        [JsonIgnore]
-        public UserMeliToken? UserMeliToken { get; set; } = new UserMeliToken();
     }
 
 }

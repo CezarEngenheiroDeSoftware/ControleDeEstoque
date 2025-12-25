@@ -53,8 +53,6 @@ public class SessionRepository : ISession
     public async Task<Login?> LoginAsync(LoginExecute login)
     {
         return await _context.Logins
-            .Include(x => x.UserConfig)
-            .Include(x => x.UserMeliToken)
             .FirstOrDefaultAsync(a => a.Email == login.Email && a.Password == login.Password);
     }
 

@@ -8,8 +8,10 @@ using Controle_De_Estoque.Service;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Controle_De_Estoque.Controllers
 {
@@ -17,23 +19,34 @@ namespace Controle_De_Estoque.Controllers
     public class MercadoLivreController : Controller
     {
         private readonly IServiceAPIMercadoLivre _serviceAPI;
+        private readonly IConfiguration _configuration;
         private readonly ISession _session;
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly MeliAcess _MeliAcess;
         private readonly Context _Context;
-        public MercadoLivreController(IServiceAPIMercadoLivre mercadoLivreService, ISession session, IHttpClientFactory httpClientFactory, Context context)
+        public MercadoLivreController(IOptions<MeliAcess> MeliAcess ,IServiceAPIMercadoLivre mercadoLivreService, ISession session, IHttpClientFactory httpClientFactory, Context context, IConfiguration configuration)
         {
             _serviceAPI = mercadoLivreService;
             _session = session;
             _httpClientFactory = httpClientFactory;
             _Context = context;
+            _MeliAcess = MeliAcess.Value;
+            _configuration = configuration;
         }
         [HttpGet("login")]
-        public IActionResult login(int userId)
+        public async Task<IActionResult> login(int userId)
         {
+            //var variable = _configuration.GetSection("client_id").Value;
+            string valorDaVariavel = _configuration.GetSection("client_id").Value;
+
+            if (valorDaVariavel == null)
+            {
+                Console.WriteLine("Variável não encontrada!");
+            }
             var url = $"https://auth.mercadolivre.com.br/authorization?response_type=code" +
-        $"&client_id=4545555147210680" +
+        $"&client_id={valorDaVariavel}" +
         $"&redirect_uri=https://overhonestly-unchastising-theressa.ngrok-free.dev/meli/GetAcessToken" +
-        $"&state={userId}";
+        $"&state=";
             return Redirect(url);
         }
 
@@ -41,73 +54,72 @@ namespace Controle_De_Estoque.Controllers
         [HttpGet("GetAcessToken")]
         public async Task<IActionResult> callback([FromQuery] string code, [FromQuery] string state)
         {
-            int userId = int.Parse(state);
-
-            var user_Login = await _Context.Logins
-                .Include(a => a.UserConfig)
-                .Include(a => a.UserMeliToken)
-                .FirstOrDefaultAsync(a => a.Id == userId);
-
-            if (user_Login == null)
-                return BadRequest("Usuário não encontrado.");
-
             var client = _httpClientFactory.CreateClient();
-
+            var redirectUri = "https://controledeestoque2025-dqdbemdgagercqhw.brazilsouth-01.azurewebsites.net/meli/GetAcessToken";
+            var redirectUriDesenvolvimento = "https://overhonestly-unchastising-theressa.ngrok-free.dev/meli/GetAcessToken";
             var content = new FormUrlEncodedContent(new[]
             {
-        new KeyValuePair<string, string>("grant_type", "authorization_code"),
-        new KeyValuePair<string, string>("client_id", user_Login.UserConfig.MeliClientId),
-        new KeyValuePair<string, string>("client_secret", user_Login.UserConfig.MeliClientSecret),
-        new KeyValuePair<string, string>("code", code),
-        new KeyValuePair<string, string>("redirect_uri", user_Login.UserConfig.redirect_uri)
-    });
+            new KeyValuePair<string, string>("grant_type", "authorization_code"),
+            new KeyValuePair<string, string>("client_id", "715396660247853"),
+            new KeyValuePair<string, string>("client_secret", "UP0pO6WTHyZUfL2LYZs5NRVBky5TWiUn"),
+            new KeyValuePair<string, string>("code", code),
+            new KeyValuePair<string, string>("redirect_uri", redirectUriDesenvolvimento)
+            });
 
             var responseStatus = await client.PostAsync("https://api.mercadolibre.com/oauth/token", content);
 
             if (!responseStatus.IsSuccessStatusCode)
-                return BadRequest("Erro ao obter token.");
+            {
+                var erro = await responseStatus.Content.ReadAsStringAsync();
+                return BadRequest(erro);
+            }
+
+            //var minhaConfig = _configuration.GetSection("MinhaChave").Value;
 
             var responseReady = await responseStatus.Content.ReadAsStringAsync();
             var token = JsonConvert.DeserializeObject<AcessToken>(responseReady);
 
-            if (user_Login.UserMeliToken == null)
-                user_Login.UserMeliToken = new UserMeliToken();
-
-            user_Login.UserMeliToken.access_token = token.access_token;
-            user_Login.UserMeliToken.refreshtoken = token.refresh_token;
-            user_Login.UserMeliToken.Expire_in = token.expires_in;
-            user_Login.UserMeliToken.datacriacao = DateTime.Now;
-            user_Login.UserMeliToken.LoginId = userId;
-
+            _MeliAcess.AcessToken = token.access_token;
+            var tokenDb = await _Context.UserMeliToken.ToListAsync();
+            if (tokenDb.Count() <= 0)
+            {
+                var meli_acess = new UserMeliToken
+                {
+                    access_token = token.access_token,
+                    refreshtoken = token.refresh_token,
+                    Expire_in = token.expires_in
+                };
+                await _Context.UserMeliToken.AddAsync(meli_acess);
+            }
+            else
+            {
+                foreach(var a in tokenDb)
+                {
+                    a.access_token = token.access_token;
+                    a.refreshtoken = token.refresh_token;
+                    a.Expire_in = token.expires_in;
+                }
+            }
             await _Context.SaveChangesAsync();
-
-            var userAtualizado = await _Context.Logins
-            //    .Include(x => x.UserConfig)
-            //    .Include(x => x.UserMeliToken)
-            .FirstOrDefaultAsync(x => x.Id == userId);
-
-            _session.CreateSession(userAtualizado);
-            TempData["logado"] = "Autenticado com sucesso";
+            TempData["logado"] = "Você está autenticado no mercado livre com sucesso";
             return RedirectToAction("Index", "Home");
         }
 
 
         [HttpGet("Index")]
-        public async Task<IActionResult> Index(string? user_Id = "226642738")
+        public async Task<IActionResult> Index(string? user_Id= "226642738")
         {
-            //var user = _session.GetSession();
+            //var login = _session.GetSession();
+            //var user = await _Context.Logins.Include(a => a.UserMeliToken).Include(b => b.UserConfig).FirstOrDefaultAsync(x => x.Id == login.Id);
+            //var userData = await _serviceAPI.GetUserData(user.UserMeliToken.access_token);
+            //user_Id = userData.id;
 
-            //if (user == null)
+            //var tokenVerific = await _serviceAPI.VerificarToken();
+
+            //if (!tokenVerific)
             //{
             //    return RedirectToAction("login");
             //}
-
-            var tokenVerific = await _serviceAPI.VerificarToken();
-
-            if (!tokenVerific)
-            {
-                return RedirectToAction("login");
-            }
 
             var products = await _serviceAPI.GetListProducts(user_Id);
 
@@ -128,10 +140,10 @@ namespace Controle_De_Estoque.Controllers
         [HttpGet("GetListProduct")]
         public async Task<IActionResult> GetListProduct(string? user_id)
         {
-            var user = _session.GetSession();
-            if (user?.UserMeliToken == null)
-                throw new Exception("Token do Mercado Livre não encontrado na sessão.");
-            user_id = user.UserConfig.MeliClientId;
+            //var user = _session.GetSession();
+            //if (user?.UserMeliToken == null)
+            //    throw new Exception("Token do Mercado Livre não encontrado na sessão.");
+            //user_id = user.UserConfig.MeliClientId;
             if (user_id != null)
             {
                 var list_products = await _serviceAPI.GetListProducts(user_id);

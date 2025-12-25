@@ -1,6 +1,7 @@
 ﻿using Controle_De_Estoque.Data;
 using Controle_De_Estoque.Models.Login;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 public class LoginController : Controller
 {
@@ -64,16 +65,32 @@ public class LoginController : Controller
     [HttpPost]
     public async Task<IActionResult> Config(UserConfig config)
     {
-        var user = _session.GetSession();
+        //var user = _session.GetSession();
 
-        if (user == null)
+       // if (user == null)
             return RedirectToAction("LoginExecute");
+        //var userLogin = await _context.Logins.FirstOrDefaultAsync(a => a.Id == user.Id);
+        //if(userLogin.userLogin == null)
+        //{
+        //    config.LoginId = userLogin.Id;
 
-        config.LoginId = user.Id;
+        //await _context.UserConfig.AddAsync(config);
+        //await _context.SaveChangesAsync();
 
-        await _context.UserConfig.AddAsync(config);
-        await _context.SaveChangesAsync();
+        //return View("ViewConfig", config);
+        //}
+        //else
+        //{
+        //    userLogin.UserConfig.MeliRefreshToken = config.MeliRefreshToken;
+        //    userLogin.UserConfig.MeliClientId = config.MeliClientId;
+        //    userLogin.UserConfig.MeliClientSecret = config.MeliClientSecret;
+        //    userLogin.UserConfig.redirect_uri = config.redirect_uri;
+        //    userLogin.UserConfig.WooUrl = config.WooUrl;
+        //    userLogin.UserConfig.WooConsumerKey = config.WooConsumerKey;
+        //    userLogin.UserConfig.WooConsumerSecret = config.WooConsumerSecret;
 
+        //}
+        // await _context.SaveChangesAsync();
         return View("ViewConfig", config);
     }
 }
